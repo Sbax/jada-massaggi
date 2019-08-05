@@ -1,27 +1,26 @@
 ---
 label: Bio
 hide_body: true
-is_partial: false
 fields:
-  - name: name
-    label: Nome
-    type: text
-    hidden: false
-    default: ''
-  - name: subtitle
-    label: Sottotitolo
-    type: text
-    hidden: false
-    default: ''
-  - type: file
-    name: profilePic
-    label: Immagine
-  - type: textarea
-    name: bio
-    label: Bio
-    config:
-      wysiwyg: true
-      schema:
-        format: html
+- name: name
+  label: Nome
+  type: text
+  hidden: false
+  default: ''
+- name: subtitle
+  label: Sottotitolo
+  type: text
+  hidden: false
+  default: ''
+- type: file
+  name: profilePic
+  label: Immagine
+- type: textarea
+  name: bio
+  label: Bio
+  config:
+    wysiwyg: true
+    schema:
+      format: html
 pages:
-  - src/data/bio.json
+- src/data/bio.json
