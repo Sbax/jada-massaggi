@@ -1,75 +1,76 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import get from 'lodash/get'
-import Helmet from 'react-helmet'
+import { graphql } from 'gatsby';
+import React from 'react';
+import Helmet from 'react-helmet';
+import { Reset } from 'styled-reset';
+import GlobalStyle from '../components/GlobalStyle';
+import Main from '../components/Main';
 
-import Bio from '../components/Bio'
-import Layout from '../components/Layout'
-import { rhythm } from '../utils/typography'
+const Index = props => {
+  const data = Object.entries(props.data).reduce((aggregated, [key, entry]) => {
+    const data = !!entry.nodes
+      ? { ...entry.nodes[0].childDataJson }
+      : { ...entry };
 
-class BlogIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const siteDescription = get(
-      this,
-      'props.data.site.siteMetadata.description'
-    )
-    const posts = get(this, 'props.data.allMarkdownRemark.edges')
+    return {
+      ...aggregated,
+      [key]: data,
+    };
+  }, {});
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <Helmet
-          htmlAttributes={{ lang: 'en' }}
-          meta={[{ name: 'description', content: siteDescription }]}
-          title={siteTitle}
-        />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = get(node, 'frontmatter.title') || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
-          )
-        })}
-      </Layout>
-    )
-  }
-}
+  const { siteMetadata } = data.site;
 
-export default BlogIndex
+  const siteTitle = siteMetadata.title;
+  const siteDescription = siteMetadata.siteDescription;
+
+  return (
+    <React.Fragment>
+      <Helmet
+        htmlAttributes={{ lang: 'it' }}
+        meta={[{ name: 'description', content: siteDescription }]}
+        title={siteTitle}
+      />
+      <Reset />
+      <GlobalStyle />
+      <Main data={data} />
+    </React.Fragment>
+  );
+};
+
+export default Index;
 
 export const pageQuery = graphql`
-  query {
-    site {
+  {
+    site: site {
       siteMetadata {
         title
         description
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-          }
+    bio: allFile(filter: { name: { eq: "bio" } }) {
+      nodes {
+        childDataJson {
+          name
+          bio
+          profilePic
+          subtitle
+        }
+      }
+    }
+    quote: allFile(filter: { name: { eq: "quote" } }) {
+      nodes {
+        childDataJson {
+          quote
+          author
+        }
+      }
+    }
+    massages: allFile(filter: { name: { eq: "massages" } }) {
+      nodes {
+        childDataJson {
+          title
+          body
         }
       }
     }
   }
-`
+`;

@@ -1,48 +1,54 @@
-import React from 'react'
-import { graphql, StaticQuery } from 'gatsby'
+import React from 'react';
+import styled from 'styled-components';
 
-// Import typefaces
-import 'typeface-montserrat'
-import 'typeface-merriweather'
+const Container = styled.section`
+  display: flex;
+  align-items: center;
 
-import { rhythm } from '../utils/typography'
-
-class Bio extends React.Component {
-  render() {
-    return (
-      <StaticQuery
-        query={graphql`
-          query BioDataQuery {
-            dataJson {
-              name
-              profilePic
-              bio
-            }
-          }
-        `}
-        render={data => (
-          <div
-            style={{
-              display: 'flex',
-              marginBottom: rhythm(2.5),
-            }}
-          >
-            <img
-              src={data.dataJson.profilePic}
-              alt={data.dataJson.name}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                width: rhythm(2),
-                height: rhythm(2),
-              }}
-            />
-            <div dangerouslySetInnerHTML={{ __html: data.dataJson.bio }} />
-          </div>
-        )}
-      />
-    )
+  > * + * {
+    margin-left: 3rem;
   }
-}
 
-export default Bio
+  padding: 0 1rem;
+`;
+
+const BioContainer = styled.article`
+  flex: 1;
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 0.67rem 0;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+`;
+
+const Profile = styled.img`
+  border-radius: 100%;
+  width: 20rem;
+  height: 20rem;
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+`;
+
+const Bio = ({ profilePic, name, subtitle, bio }) => {
+  return (
+    <Container>
+      <BioContainer>
+        <h1>{name}</h1>
+        <h2>{subtitle}</h2>
+        <p dangerouslySetInnerHTML={{ __html: bio }} />
+      </BioContainer>
+
+      <Profile src={profilePic} />
+    </Container>
+  );
+};
+
+export default Bio;
