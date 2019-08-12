@@ -72,5 +72,15 @@ export const pageQuery = graphql`
         }
       }
     }
+    services: allFile(filter: { name: { eq: "services" } }) {
+      nodes {
+        childDataJson {
+          services {
+            title
+            description
+          }
+        }
+      }
+    }
   }
 `;

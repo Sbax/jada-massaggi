@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import shape from '../svgs/shape.svg';
+import smooth from '../svgs/smooth.svg';
 import { theme } from '../theme';
 import Bio from './Bio';
 import Header from './Header';
-import Quote from './Quote';
 import Massages from './Massages';
-
-import smooth from '../svgs/smooth.svg';
+import Quote from './Quote';
+import Services from './Services';
 
 const Container = styled.main`
   max-width: 1024px;
@@ -25,11 +25,15 @@ const GradientSection = styled.div`
 
     & + * {
       margin-top: -10rem;
-      padding-top: 10rem;
+      padding-top: 7rem;
     }
   }
 
   background: ${theme.mainGradient};
+
+  padding-bottom: 2rem;
+  border-bottom-left-radius: 70% 3rem;
+  border-bottom-right-radius: 70% 1rem;
 `;
 
 const Section = styled.section``;
@@ -57,7 +61,7 @@ const ShapeSection = styled(Section)`
 `;
 
 const Main = ({ data }) => {
-  const { bio, quote, massages } = data;
+  const { bio, quote, massages, services } = data;
 
   return (
     <React.Fragment>
@@ -70,7 +74,7 @@ const Main = ({ data }) => {
       </Container>
       <GradientSection>
         <img src={smooth} />
-        <Container>Lavoro in corso</Container>
+        <Services {...services} />
       </GradientSection>
     </React.Fragment>
   );

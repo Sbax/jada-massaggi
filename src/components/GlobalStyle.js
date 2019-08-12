@@ -3,7 +3,7 @@ import { theme } from '../theme.js';
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Prata');
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
 
   body {
     font-family: 'Open Sans', sans-serif;
