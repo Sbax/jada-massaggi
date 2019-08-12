@@ -16,6 +16,10 @@ const Container = styled.main`
   > * + * {
     margin-top: 3rem;
   }
+
+  > header + * {
+    margin-top: 0;
+  }
 `;
 
 const GradientSection = styled.div`
@@ -25,7 +29,7 @@ const GradientSection = styled.div`
 
     & + * {
       margin-top: -10rem;
-      padding-top: 7rem;
+      padding-top: 8rem;
     }
   }
 

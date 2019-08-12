@@ -8,6 +8,14 @@ const HeaderContainer = styled.header`
   align-items: center;
 
   padding: 1rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+
+    > * + * {
+      margin-top: 1rem;
+    }
+  }
 `;
 
 const Logo = styled.img`

@@ -34,7 +34,8 @@ const Service = styled.article`
 
   > img {
     width: 10rem;
-    height: 10rem;
+    max-width: 35vw;
+    height: 100%;
 
     border-radius: 70% 50% / 70% 60%;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.22),
