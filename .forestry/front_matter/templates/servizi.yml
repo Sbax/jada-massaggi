@@ -23,5 +23,4 @@ fields:
     min: 
     max: 
     labelField: 
-  label: services
-  description: Servizi
+  label: Servizi
