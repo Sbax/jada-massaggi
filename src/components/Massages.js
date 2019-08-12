@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.section`
+  padding: 0 2rem;
+
   h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -13,13 +15,15 @@ const Container = styled.section`
 `;
 
 const Services = styled.section`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+  margin: 2rem 0;
 
-  margin: 3rem;
-
-  > * + * {
-    margin-left: 4rem;
+  @media (min-width: 1024px) {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 `;
 

@@ -5,17 +5,31 @@ import lotus from '../svgs/lotus.svg';
 
 const Container = styled.section`
   display: flex;
-  max-width: 75vw;
+  flex-direction: column;
+
+  padding: 0 2rem;
   margin: auto;
 
-  > * + * {
-    margin-left: 2rem;
+  @media (min-width: 1024px) {
+    flex-direction: row;
+
+    > * + * {
+      margin-left: 2rem;
+    }
   }
 `;
 
 const Illustration = styled.img`
-  width: 20rem;
+  margin: auto;
+  order: 1;
+
+  width: 12rem;
   opacity: 0.65;
+
+  @media (min-width: 1024px) {
+    order: 0;
+    width: 20rem;
+  }
 `;
 
 const QuoteContainer = styled.blockquote`

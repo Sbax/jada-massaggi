@@ -5,14 +5,25 @@ const Container = styled.section`
   display: flex;
   align-items: center;
 
-  > * + * {
-    margin-left: 3rem;
-  }
+  flex-direction: column;
 
   padding: 0 1rem;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+
+    > * + * {
+      margin-left: 3rem;
+    }
+  }
 `;
 
 const BioContainer = styled.article`
+  order: 1;
+  @media (min-width: 1024px) {
+    order: 0;
+  }
+
   flex: 1;
 
   h1 {
@@ -31,10 +42,16 @@ const BioContainer = styled.article`
 `;
 
 const Profile = styled.img`
+  width: 15rem;
+  height: 15rem;
+
   border-radius: 100%;
-  width: 20rem;
-  height: 20rem;
   box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+
+  @media (min-width: 1024px) {
+    width: 20rem;
+    height: 20rem;
+  }
 `;
 
 const Bio = ({ profilePic, name, subtitle, bio }) => {
