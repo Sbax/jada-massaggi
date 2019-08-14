@@ -32,15 +32,20 @@ const Service = styled.article`
   flex-direction: column;
   align-items: center;
 
-  > img {
+  div {
     width: 10rem;
     max-width: 35vw;
     height: 100%;
 
-    border-radius: 70% 50% / 70% 60%;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.22),
-      0 1px 8px 2px rgba(0, 0, 0, 0.22);
-    opacity: 0.75;
+    img {
+      width: 100%;
+      height: 100%;
+
+      border-radius: 70% 50% / 70% 60%;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.22),
+        0 1px 8px 2px rgba(0, 0, 0, 0.22);
+      opacity: 0.75;
+    }
   }
 
   span {
@@ -61,19 +66,27 @@ const Massages = ({ title, body }) => {
       <p dangerouslySetInnerHTML={{ __html: body }} />
       <Services>
         <Service>
-          <img src="/essential.jpg" />
+          <div>
+            <img src="/essential.jpg" />
+          </div>
           <span>Oli Essenziali</span>
         </Service>
         <Service>
-          <img src="/ayurveda.jpg" />
+          <div>
+            <img src="/ayurveda.jpg" />
+          </div>
           <span>Ayurveda</span>
         </Service>
         <Service>
-          <img src="/sunset.jpg" />
+          <div>
+            <img src="/sunset.jpg" />
+          </div>
           <span>Linfodrenaggio</span>
         </Service>
         <Service>
-          <img src="/hot-stones.jpg" />
+          <div>
+            <img src="/hot-stones.jpg" />
+          </div>
           <span>Hot Stones</span>
         </Service>
       </Services>

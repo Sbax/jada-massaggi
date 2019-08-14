@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { Reset } from 'styled-reset';
 import GlobalStyle from '../components/GlobalStyle';
 import Main from '../components/Main';
+import '../icons';
 
 const Index = props => {
   const data = Object.entries(props.data).reduce((aggregated, [key, entry]) => {
@@ -79,6 +80,18 @@ export const pageQuery = graphql`
             title
             description
           }
+        }
+      }
+    }
+    contacts: allFile(filter: { name: { eq: "contacts" } }) {
+      nodes {
+        childDataJson {
+          facebookUrl
+          facebookName
+          facebookDescription
+          phone
+          phoneDescription
+          address
         }
       }
     }

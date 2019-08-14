@@ -59,7 +59,7 @@ const Services = ({ services }) => {
     <Container>
       <Illustration src={relax} />
       {services.map(({ title, description }) => (
-        <article>
+        <article key={title}>
           <h1>{title}</h1>
           <hr />
           <p>{description}</p>

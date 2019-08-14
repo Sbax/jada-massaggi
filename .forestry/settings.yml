@@ -16,6 +16,9 @@ sections:
 - type: document
   path: src/data/services.json
   label: Servizi
+- type: document
+  path: src/data/contacts.json
+  label: Contatti
 upload_dir: static/uploads
 public_path: "/uploads"
 front_matter_path: "/uploads"

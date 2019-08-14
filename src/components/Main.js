@@ -8,6 +8,7 @@ import Header from './Header';
 import Massages from './Massages';
 import Quote from './Quote';
 import Services from './Services';
+import Contacts from './Contacts';
 
 const Container = styled.main`
   max-width: 1024px;
@@ -38,6 +39,10 @@ const GradientSection = styled.div`
   padding-bottom: 2rem;
   border-bottom-left-radius: 70% 3rem;
   border-bottom-right-radius: 70% 1rem;
+
+  & + * {
+    margin-top: 3rem;
+  }
 `;
 
 const Section = styled.section``;
@@ -65,7 +70,7 @@ const ShapeSection = styled(Section)`
 `;
 
 const Main = ({ data }) => {
-  const { bio, quote, massages, services } = data;
+  const { bio, quote, massages, services, contacts } = data;
 
   return (
     <React.Fragment>
@@ -80,6 +85,9 @@ const Main = ({ data }) => {
         <img src={smooth} />
         <Services {...services} />
       </GradientSection>
+      <Container>
+        <Contacts {...contacts} />
+      </Container>
     </React.Fragment>
   );
 };
