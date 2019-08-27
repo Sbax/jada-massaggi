@@ -1,15 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-
-const ScrollLock = createGlobalStyle`
-  body {
-    overflow: hidden;
-  }
-`;
+import styled from 'styled-components';
 
 const LightboxContainer = styled.section`
-  font-size: 3rem;
+  font-size: 2rem;
+
   user-select: none;
 
   position: fixed;
@@ -20,9 +15,6 @@ const LightboxContainer = styled.section`
 
   max-height: 100vh;
   max-width: 100vw;
-
-  background: rgba(0, 0, 0, 0.5);
-
   z-index: 9;
 
   display: flex;
@@ -30,14 +22,37 @@ const LightboxContainer = styled.section`
   justify-content: flex-start;
 `;
 
+const Backdrop = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+`;
+
 const Header = styled.div`
+  z-index: 4;
   position: absolute;
   right: 0;
   top: 0;
 
-  padding: 2rem;
+  padding: 1rem;
 
   cursor: pointer;
+`;
+
+const ImageContainer = styled.div`
+  z-index: 2;
+  display: flex;
+  img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  padding: 3rem 0;
 `;
 
 const Body = styled.div`
@@ -48,39 +63,52 @@ const Body = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  padding: 2rem;
-
-  > div {
-    display: flex;
-    align-items: center;
+  > * {
     height: 100%;
-    padding: 0 2rem;
+  }
+`;
 
-    cursor: pointer;
+const Navigation = styled.div`
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+
+  position: absolute;
+  &:first-child {
+    left: 0;
   }
 
-  img {
-    width: auto;
-    height: 100%;
-    display: block;
+  &:last-child {
+    right: 0;
   }
+
+  @media (min-width: 1024px) {
+    position: relative;
+  }
+
+  cursor: pointer;
 `;
 
 const Lightbox = ({ current, close, previous, next }) => (
   <>
-    <ScrollLock />
     <LightboxContainer>
       <Header onClick={close}>
         <FontAwesomeIcon icon="times" />
       </Header>
       <Body>
-        <div onClick={previous}>
+        <Backdrop onClick={close} />
+        <Navigation onClick={previous}>
           <FontAwesomeIcon icon="chevron-left" />
-        </div>
-        <img src={current} />
-        <div onClick={next}>
+        </Navigation>
+        <ImageContainer>
+          <img src={current} />
+        </ImageContainer>
+        <Navigation onClick={next}>
           <FontAwesomeIcon icon="chevron-right" />
-        </div>
+        </Navigation>
       </Body>
     </LightboxContainer>
   </>
