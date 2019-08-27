@@ -17,7 +17,7 @@ const Picture = styled.img`
 `;
 
 const Gallery = ({ gallery }) => {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState();
 
   return (
     <>
