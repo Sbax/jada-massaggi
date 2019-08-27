@@ -4,13 +4,14 @@ import shape from '../svgs/shape.svg';
 import smooth from '../svgs/smooth.svg';
 import { theme } from '../theme';
 import Bio from './Bio';
+import Contacts from './Contacts';
+import Gallery from './Gallery';
 import Header from './Header';
 import Massages from './Massages';
 import Quote from './Quote';
 import Services from './Services';
-import Contacts from './Contacts';
 
-const Container = styled.main`
+const Container = styled.section`
   max-width: 1024px;
   margin: auto;
 
@@ -23,7 +24,9 @@ const Container = styled.main`
   }
 `;
 
-const GradientSection = styled.div`
+const GradientSection = styled.section`
+  margin-top: -3rem;
+
   width: 100%;
   > img {
     width: 100%;
@@ -41,11 +44,20 @@ const GradientSection = styled.div`
   border-bottom-right-radius: 70% 1rem;
 
   & + * {
-    margin-top: 3rem;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
   }
+
+  position: relative;
+  z-index: 1;
 `;
 
 const Section = styled.section``;
+
+const InvertedSection = styled(Section)`
+  background: ${theme.text};
+  color: ${theme.mainBg};
+`;
 
 const ShapeSection = styled(Section)`
   min-height: 100vh;
@@ -70,24 +82,33 @@ const ShapeSection = styled(Section)`
 `;
 
 const Main = ({ data }) => {
-  const { bio, quote, massages, services, contacts } = data;
+  const { bio, quote, massages, services, contacts, gallery } = data;
 
   return (
     <React.Fragment>
       <ShapeSection />
-      <Container>
-        <Header />
-        <Bio {...bio} />
-        <Quote {...quote} />
-        <Massages {...massages} />
-      </Container>
+      <Section>
+        <Container>
+          <Header />
+          <Bio {...bio} />
+          <Quote {...quote} />
+          <Massages {...massages} />
+        </Container>
+      </Section>
       <GradientSection>
         <img src={smooth} />
-        <Services {...services} />
+        <Container>
+          <Services {...services} />
+        </Container>
       </GradientSection>
-      <Container>
-        <Contacts {...contacts} />
-      </Container>
+      <InvertedSection>
+        <Gallery {...gallery} />
+      </InvertedSection>
+      <Section>
+        <Container>
+          <Contacts {...contacts} />
+        </Container>
+      </Section>
     </React.Fragment>
   );
 };

@@ -83,6 +83,13 @@ export const pageQuery = graphql`
         }
       }
     }
+    gallery: allFile(filter: { name: { eq: "gallery" } }) {
+      nodes {
+        childDataJson {
+          gallery
+        }
+      }
+    }
     contacts: allFile(filter: { name: { eq: "contacts" } }) {
       nodes {
         childDataJson {
