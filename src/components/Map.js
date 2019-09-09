@@ -24,6 +24,7 @@ const MapSection = styled.section`
 
   h1,
   h2 {
+    margin: 0 1rem;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.4rem;
 
