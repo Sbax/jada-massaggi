@@ -2,6 +2,16 @@ import React from 'react';
 import { Map as LeafletMap, Marker, TileLayer } from 'react-leaflet';
 import styled from 'styled-components';
 
+const MapContainer = styled.div`
+  height: 30rem;
+  width: 100%;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.25);
+
+  > * {
+    height: 100%;
+  }
+`;
+
 const MapSection = styled.section`
   display: flex;
   align-items: center;
@@ -19,15 +29,9 @@ const MapSection = styled.section`
 
     opacity: 0.7;
   }
-`;
 
-const MapContainer = styled.div`
-  height: 30rem;
-  width: 100%;
-  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
-
-  > * {
-    height: 100%;
+  > * + ${MapContainer} {
+    margin-top: 2rem;
   }
 `;
 
@@ -40,7 +44,7 @@ const Map = () => {
       <h1>Trovarmi è semplice</h1>
       <h2>Via Massimo Villa 34/c, Imola (BO)</h2>
       <MapContainer>
-        <LeafletMap center={position} zoom={zoom}>
+        <LeafletMap center={position} zoom={zoom} scrollWheelZoom={false}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"

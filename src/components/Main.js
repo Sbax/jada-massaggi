@@ -11,6 +11,7 @@ import Map from './Map';
 import Massages from './Massages';
 import Quote from './Quote';
 import Services from './Services';
+import Footer from './Footer';
 
 const Container = styled.section`
   max-width: 1024px;
@@ -77,6 +78,8 @@ const InnerRadiusSection = styled(Section)`
 
     user-select: none;
   }
+
+  overflow: auto;
 `;
 
 const InvertedSection = styled(Section)`
@@ -107,12 +110,12 @@ const ShapeSection = styled(Section)`
 `;
 
 const Main = ({ data }) => {
-  const { bio, quote, massages, services, contacts, gallery } = data;
+  const { bio, quote, massages, services, contacts, gallery, footer } = data;
 
   return (
     <React.Fragment>
       <ShapeSection />
-      <Section>
+      <Section id="about">
         <Container>
           <Header />
           <Bio {...bio} />
@@ -120,7 +123,7 @@ const Main = ({ data }) => {
           <Massages {...massages} />
         </Container>
       </Section>
-      <GradientSection>
+      <GradientSection id="massaggi">
         <img src={smooth} />
         <Container>
           <Services {...services} />
@@ -129,7 +132,7 @@ const Main = ({ data }) => {
       <InvertedSection>
         <Gallery {...gallery} />
       </InvertedSection>
-      <Section>
+      <Section id="contatti">
         <Container>
           <Contacts {...contacts} />
         </Container>
@@ -139,6 +142,9 @@ const Main = ({ data }) => {
           <Map />
         </Container>
       </InnerRadiusSection>
+      <InvertedSection as="footer">
+        <Footer {...footer} />
+      </InvertedSection>
     </React.Fragment>
   );
 };

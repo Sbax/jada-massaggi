@@ -102,5 +102,12 @@ export const pageQuery = graphql`
         }
       }
     }
+    footer: allFile(filter: { name: { eq: "footer" } }) {
+      nodes {
+        childDataJson {
+          data
+        }
+      }
+    }
   }
 `;
