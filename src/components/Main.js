@@ -7,6 +7,7 @@ import Bio from './Bio';
 import Contacts from './Contacts';
 import Gallery from './Gallery';
 import Header from './Header';
+import Map from './Map';
 import Massages from './Massages';
 import Quote from './Quote';
 import Services from './Services';
@@ -52,7 +53,31 @@ const GradientSection = styled.section`
   z-index: 1;
 `;
 
-const Section = styled.section``;
+const Section = styled.section`
+  background: ${({ background }) => background || 'auto'};
+`;
+
+const InnerRadiusSection = styled(Section)`
+  position: relative;
+  padding: 2rem 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 70%;
+
+    background: ${theme.text};
+
+    border-top-left-radius: 70% 20%;
+    border-top-right-radius: 70% 20%;
+
+    user-select: none;
+  }
+`;
 
 const InvertedSection = styled(Section)`
   background: ${theme.text};
@@ -109,6 +134,11 @@ const Main = ({ data }) => {
           <Contacts {...contacts} />
         </Container>
       </Section>
+      <InnerRadiusSection>
+        <Container>
+          <Map />
+        </Container>
+      </InnerRadiusSection>
     </React.Fragment>
   );
 };
