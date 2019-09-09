@@ -18,10 +18,6 @@ const MapSection = styled.section`
 
   flex-direction: column;
 
-  > * + * {
-    margin-top: 1rem;
-  }
-
   h1,
   h2 {
     margin: 0 1rem;
@@ -29,6 +25,10 @@ const MapSection = styled.section`
     font-size: 1.4rem;
 
     opacity: 0.7;
+  }
+
+  > * + * {
+    margin-top: 1rem;
   }
 
   > * + ${MapContainer} {
