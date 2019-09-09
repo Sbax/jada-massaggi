@@ -20,15 +20,11 @@ const MapSection = styled.section`
 
   h1,
   h2 {
-    margin: 0 1rem;
+    margin: 0.5rem 1rem;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.4rem;
 
     opacity: 0.7;
-  }
-
-  > * + * {
-    margin-top: 1rem;
   }
 
   > * + ${MapContainer} {
