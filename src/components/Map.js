@@ -36,6 +36,8 @@ const Map = () => {
   const position = [44.365347, 11.688317];
   const zoom = 15;
 
+  if (typeof window === 'undefined') return null;
+
   return (
     <MapSection>
       <h1>Trovarmi è semplice</h1>

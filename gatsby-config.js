@@ -12,7 +12,12 @@ module.exports = {
   },
   pathPrefix: siteUrl ? siteUrl.pathname : '/',
   plugins: [
-    'gatsby-plugin-react-leaflet',
+    {
+      resolve: 'gatsby-plugin-react-leaflet',
+      options: {
+        linkStyles: false,
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

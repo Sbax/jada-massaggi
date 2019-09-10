@@ -27,10 +27,6 @@ const Container = styled.section`
 `;
 
 const GradientSection = styled.section`
-  @media (min-width: 1024px) {
-    margin-top: -3rem;
-  }
-
   width: 100%;
   > img {
     width: 100%;
