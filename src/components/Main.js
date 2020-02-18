@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import shape from '../svgs/shape.svg';
 import smooth from '../svgs/smooth.svg';
+import wave from '../svgs/wave.svg';
 import { theme } from '../theme';
 import Bio from './Bio';
 import Contacts from './Contacts';
@@ -52,59 +53,70 @@ const GradientSection = styled.section`
   z-index: 1;
 `;
 
-const Section = styled.section`
-  background: ${({ background }) => background || 'auto'};
-`;
+const Section = styled.section`background: ${({ background }) => background || 'auto'};`;
 
 const InnerRadiusSection = styled(Section)`
-  position: relative;
-  padding: 2rem 0;
+position: relative;
+padding: 2rem 0;
 
-  &:before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+&:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  height: 70%;
+  
+  background: ${theme.text};
+  
+  border-top-left-radius: 70% 20%;
+  border-top-right-radius: 70% 20%;
+  
+  user-select: none;
+}
 
-    height: 70%;
-
-    background: ${theme.text};
-
-    border-top-left-radius: 70% 20%;
-    border-top-right-radius: 70% 20%;
-
-    user-select: none;
-  }
-
-  overflow: auto;
+overflow: auto;
 `;
 
 const InvertedSection = styled(Section)`
-  background: ${theme.text};
-  color: ${theme.mainBg};
+background: ${theme.text};
+color: ${theme.mainBg};
+`;
+
+const InvertedSectionDecorated = styled(InvertedSection)`
+position: relative;
+overflow: hidden;
 `;
 
 const ShapeSection = styled(Section)`
-  min-height: 100vh;
-  margin-right: 0;
+min-height: 100vh;
+margin-right: 0;
 
-  mask: url(${shape});
-  mask-repeat: no-repeat;
-  mask-size: 70%;
-  mask-position: top right;
+mask: url(${shape});
+mask-repeat: no-repeat;
+mask-size: 70%;
+mask-position: top right;
 
+position: absolute;
+z-index: -1;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+
+background: ${theme.mainGradient};
+opacity: 0.3;
+
+pointer-events: none;
+`;
+
+const Decoration = styled.img`
   position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  background: ${theme.mainGradient};
-  opacity: 0.3;
-
+  z-index: 1;
+  bottom: -10vw;
   pointer-events: none;
+  width: 110vw;
 `;
 
 const Main = ({ data }) => {
@@ -127,9 +139,10 @@ const Main = ({ data }) => {
           <Services {...services} />
         </Container>
       </GradientSection>
-      <InvertedSection>
+      <InvertedSectionDecorated>
         <Gallery {...gallery} />
-      </InvertedSection>
+        <Decoration src={wave} />
+      </InvertedSectionDecorated>
       <Section id="contatti">
         <Container>
           <Contacts {...contacts} />

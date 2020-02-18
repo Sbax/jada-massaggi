@@ -15,7 +15,7 @@ const LightboxContainer = styled.section`
 
   max-height: 100vh;
   max-width: 100vw;
-  z-index: 9;
+  z-index: 99;
 
   display: flex;
   flex-direction: column;

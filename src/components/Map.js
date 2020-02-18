@@ -10,6 +10,9 @@ const MapContainer = styled.div`
   > * {
     height: 100%;
   }
+
+  position: relative;
+  z-index: 1;
 `;
 
 const MapSection = styled.section`
@@ -33,7 +36,7 @@ const MapSection = styled.section`
 `;
 
 const Map = () => {
-  const position = [44.365347, 11.688317];
+  const position = [ 44.365347, 11.688317 ];
   const zoom = 15;
 
   if (typeof window === 'undefined') return null;
@@ -45,7 +48,7 @@ const Map = () => {
       <MapContainer>
         <LeafletMap center={position} zoom={zoom} scrollWheelZoom={false}>
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            attribution="&copy; <a href=&quot;https://www.openstreetmap.org/copyright&quot;>OpenStreetMap</a> contributors &copy; <a href=&quot;https://carto.com/attributions&quot;>CARTO</a>"
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
             maxZoom={19}
           />
