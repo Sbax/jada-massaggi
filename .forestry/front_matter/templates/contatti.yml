@@ -4,28 +4,34 @@ hide_body: true
 fields:
 - type: text
   name: facebookUrl
-  label: facebookUrl
+  label: URL facebook
 - type: text
   name: facebookName
-  label: facebookName
+  label: Nome Facebook
 - type: text
   name: instagramUrl
-  label: instagramUrl
+  label: URL Instagram
 - type: text
   name: instagramName
-  label: instagramName
+  label: Nome Instagram
 - type: text
   name: facebookDescription
-  label: facebookDescription
+  label: Descrizione social
 - type: text
   name: phone
-  label: phone
+  label: Telefono
 - type: textarea
   name: phoneDescription
-  label: phoneDescription
+  label: Descrizione Telefono
+- name: times
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Orari
 - type: text
   name: address
-  label: address
-- type: text
-  name: times
-  label: times
+  label: Indirizzo
