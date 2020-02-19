@@ -6,15 +6,13 @@ import GlobalStyle from '../components/GlobalStyle';
 import Main from '../components/Main';
 import '../icons';
 
-const Index = props => {
-  const data = Object.entries(props.data).reduce((aggregated, [key, entry]) => {
-    const data = !!entry.nodes
-      ? { ...entry.nodes[0].childDataJson }
-      : { ...entry };
+const Index = (props) => {
+  const data = Object.entries(props.data).reduce((aggregated, [ key, entry ]) => {
+    const data = !!entry.nodes ? { ...entry.nodes[0].childDataJson } : { ...entry };
 
     return {
       ...aggregated,
-      [key]: data,
+      [key]: data
     };
   }, {});
 
@@ -27,7 +25,7 @@ const Index = props => {
     <React.Fragment>
       <Helmet
         htmlAttributes={{ lang: 'it' }}
-        meta={[{ name: 'description', content: siteDescription }]}
+        meta={[ { name: 'description', content: siteDescription } ]}
         title={siteTitle}
       />
       <Reset />
@@ -95,10 +93,13 @@ export const pageQuery = graphql`
         childDataJson {
           facebookUrl
           facebookName
+          instagramUrl
+          instagramName
           facebookDescription
           phone
           phoneDescription
           address
+          times
         }
       }
     }

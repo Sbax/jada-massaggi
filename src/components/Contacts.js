@@ -13,9 +13,31 @@ const Container = styled.section`
   }
 `;
 
+const SocialContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
+
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  > * + * {
+    margin-top: 1rem;
+
+    @media (min-width: 1024px) {
+      margin-top: 0;
+    }
+  }
+`;
+
 const ContactsContainer = styled.section`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   > * {
     flex: 1;
@@ -25,55 +47,68 @@ const ContactsContainer = styled.section`
     margin-top: 1rem;
   }
 
-  @media (min-width: 1024px) {
-    flex-direction: row;
-
-    > * + * {
-      margin-top: 0;
-    }
+  & + * {
+    margin-top: 1rem;
   }
 `;
 
-const IconUrl = styled.a`
-  font-size: 2rem;
-`;
+const IconUrl = styled.a`font-size: 2rem;`;
 
 const Contact = styled.article`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   align-items: center;
   line-height: 1.4;
-
-  @media (min-width: 1024px) {
-    width: 80%;
-  }
 
   > hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-top: 1px solid currentColor;
     opacity: 0.25;
-
-    width: 90%;
+    width: 100%;
   }
 
   > a {
     text-decoration: none;
   }
 
-  > p {
-    opacity: 0.65;
-    text-align: center;
+  @media (min-width: 1024px) {
+    width: 80%;
+
+    > hr {
+      width: 60%;
+    }
   }
+`;
+
+const ContactDesciption = styled.p`
+  opacity: 0.65;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    width: 55%;
+  }
+`;
+
+const Times = styled.section`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  white-space: pre-wrap;
+  line-height: 1.3;
 `;
 
 const Contacts = ({
   facebookUrl,
   facebookName,
+  instagramUrl,
+  instagramName,
   facebookDescription,
   phone,
   phoneDescription,
+  times
 }) => {
   const phoneUrl = `tel:${phone.split(' ').join('-')}`;
 
@@ -82,18 +117,35 @@ const Contacts = ({
       <h1>Contatti</h1>
 
       <ContactsContainer>
-        <Contact>
-          <IconUrl href={facebookUrl}>
-            <FontAwesomeIcon icon={['fab', 'facebook']} />
-          </IconUrl>
+        <SocialContainer>
+          <Contact>
+            <IconUrl href={facebookUrl}>
+              <FontAwesomeIcon icon={[ 'fab', 'facebook' ]} />
+            </IconUrl>
 
-          <hr />
+            <hr />
+            <a href={facebookUrl}>
+              <b>{facebookName}</b>
+            </a>
+          </Contact>
 
-          <a href={facebookUrl}>
-            <b>{facebookName}</b>
-          </a>
-          <p>{facebookDescription}</p>
-        </Contact>
+          <Contact>
+            <IconUrl href={facebookUrl}>
+              <span className="fa-layers fa-fw">
+                <FontAwesomeIcon icon="circle" />
+                <FontAwesomeIcon icon={[ 'fab', 'instagram' ]} inverse transform="shrink-6" />
+              </span>
+            </IconUrl>
+
+            <hr />
+            <a href={instagramUrl}>
+              <b>{instagramName}</b>
+            </a>
+          </Contact>
+        </SocialContainer>
+        <ContactDesciption>{facebookDescription}</ContactDesciption>
+      </ContactsContainer>
+      <ContactsContainer>
         <Contact>
           <IconUrl href={phoneUrl}>
             <span className="fa-layers fa-fw">
@@ -107,9 +159,12 @@ const Contacts = ({
           <a href={phoneUrl}>
             <b>{phone}</b>
           </a>
-          <p>{phoneDescription}</p>
+          <ContactDesciption>{phoneDescription}</ContactDesciption>
         </Contact>
       </ContactsContainer>
+
+      <h1>Orari</h1>
+      <Times>{times}</Times>
     </Container>
   );
 };

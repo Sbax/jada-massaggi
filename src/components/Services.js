@@ -37,6 +37,8 @@ const Container = styled.section`
       text-align: center;
       font-weight: lighter;
       line-height: 1.4;
+
+      min-height: 4.2em;
     }
   }
 
@@ -50,9 +52,7 @@ const Container = styled.section`
   }
 `;
 
-const Illustration = styled.img`
-  max-width: 12rem;
-`;
+const Illustration = styled.img`max-width: 12rem;`;
 
 const Services = ({ services }) => {
   return (
