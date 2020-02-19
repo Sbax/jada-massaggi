@@ -1,0 +1,31 @@
+---
+label: Contatti
+hide_body: true
+fields:
+- type: text
+  name: facebookUrl
+  label: facebookUrl
+- type: text
+  name: facebookName
+  label: facebookName
+- type: text
+  name: instagramUrl
+  label: instagramUrl
+- type: text
+  name: instagramName
+  label: instagramName
+- type: text
+  name: facebookDescription
+  label: facebookDescription
+- type: text
+  name: phone
+  label: phone
+- type: textarea
+  name: phoneDescription
+  label: phoneDescription
+- type: text
+  name: address
+  label: address
+- type: text
+  name: times
+  label: times
