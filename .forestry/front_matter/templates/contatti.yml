@@ -1,0 +1,39 @@
+---
+label: Contatti
+hide_body: true
+fields:
+- type: text
+  name: facebookUrl
+  label: URL facebook
+- type: text
+  name: facebookName
+  label: Nome Facebook
+- type: text
+  name: instagramUrl
+  label: URL Instagram
+- type: text
+  name: instagramName
+  label: Nome Instagram
+- type: text
+  name: facebookDescription
+  label: Descrizione social
+- type: text
+  name: phone
+  label: Telefono
+- type: textarea
+  name: phoneDescription
+  label: Descrizione Telefono
+- name: times
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Orari
+- type: text
+  name: address
+  label: Indirizzo
+pages:
+- src/data/contacts.json
